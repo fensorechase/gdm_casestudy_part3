@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block title %}Register - GDM Care{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-card">
+        <h1>Create Your Account</h1>
+        <p class="auth-subtitle">Join GDM Care to start tracking your health</p>
+
+        <form method="POST" action="{{ url_for('register') }}" class="auth-form">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="password">Password *</label>
+                    <input type="password" id="password" name="password" required minlength="6">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="due_date">Due Date *</label>
+                    <input type="date" id="due_date" name="due_date" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="gestational_weeks">Weeks Pregnant *</label>
+                    <input type="number" id="gestational_weeks" name="gestational_weeks" 
+                           min="1" max="42" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="kerala_region">Region</label>
+                    <select id="kerala_region" name="kerala_region">
+                        <option value="Ernakulam">Ernakulam</option>
+                        <option value="Thiruvananthapuram">Thiruvananthapuram</option>
+                        <option value="Kozhikode">Kozhikode</option>
+                        <option value="Kollam">Kollam</option>
+                        <option value="Thrissur">Thrissur</option>
+                        <option value="Palakkad">Palakkad</option>
+                        <option value="Alappuzha">Alappuzha</option>
+                        <option value="Kottayam">Kottayam</option>
+                        <option value="Kannur">Kannur</option>
+                        <option value="Kasaragod">Kasaragod</option>
+                        <option value="Wayanad">Wayanad</option>
+                        <option value="Malappuram">Malappuram</option>
+                        <option value="Pathanamthitta">Pathanamthitta</option>
+                        <option value="Idukki">Idukki</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="language">Preferred Language</label>
+                    <select id="language" name="language">
+                        <option value="en">English</option>
+                        <option value="ml" selected>Malayalam</option>
+                    </select>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+        </form>
+
+        <div class="auth-footer">
+            <p>Already have an account? <a href="{{ url_for('login') }}">Sign in here</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}

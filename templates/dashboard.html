@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - GDM Care{% endblock %}
+
+{% block content %}
+<div class="dashboard">
+    <div class="dashboard-header">
+        <h1>Welcome, {{ current_user.name }}</h1>
+        <p class="dashboard-subtitle">{{ patient.gestational_age_weeks }} weeks pregnant &middot; Due {{ patient.due_date }}</p>
+    </div>
+
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-label">Today's Readings</div>
+            <div class="stat-value">{{ today_count }}</div>
+            <div class="stat-note">Target: 4 per day</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-label">Today's Average</div>
+            <div class="stat-value">{{ today_avg }}</div>
+            <div class="stat-note">mg/dL</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-label">7-Day Average</div>
+            <div class="stat-value">{{ week_avg }}</div>
+            <div class="stat-note">mg/dL</div>
+        </div>
+    </div>
+
+    <div class="action-cards">
+        <a href="{{ url_for('log_glucose') }}" class="action-card action-card-primary">
+            <div class="action-icon">+</div>
+            <h3>Log Glucose</h3>
+            <p>Record a new reading</p>
+        </a>
+
+        <a href="{{ url_for('chat') }}" class="action-card action-card-secondary">
+            <div class="action-icon">?</div>
+            <h3>Ask Questions</h3>
+            <p>Get Kerala diet guidance</p>
+        </a>
+
+        <a href="{{ url_for('glucose_history') }}" class="action-card action-card-tertiary">
+            <div class="action-icon">▤</div>
+            <h3>View History</h3>
+            <p>See all your readings</p>
+        </a>
+    </div>
+
+    {% if readings %}
+    <div class="recent-readings">
+        <h2>Recent Readings</h2>
+        <div class="readings-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date & Time</th>
+                        <th>Type</th>
+                        <th>Value</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for reading in readings %}
+                    <tr class="{% if reading.flagged_high %}reading-high{% elif reading.flagged_low %}reading-low{% endif %}">
+                        <td>{{ reading.timestamp }}</td>
+                        <td>{{ reading.reading_type.replace('_', ' ').title() }}</td>
+                        <td><strong>{{ reading.reading_value }}</strong> mg/dL</td>
+                        <td>
+                            {% if reading.flagged_high %}
+                            <span class="badge badge-warning">High</span>
+                            {% elif reading.flagged_low %}
+                            <span class="badge badge-danger">Low</span>
+                            {% else %}
+                            <span class="badge badge-success">Normal</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <a href="{{ url_for('glucose_history') }}" class="view-all-link">View all readings →</a>
+    </div>
+    {% else %}
+    <div class="empty-state">
+        <h3>No readings yet</h3>
+        <p>Start tracking your glucose to see insights here</p>
+        <a href="{{ url_for('log_glucose') }}" class="btn btn-primary">Log Your First Reading</a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

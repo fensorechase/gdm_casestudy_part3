@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Glucose History - GDM Care{% endblock %}
+
+{% block content %}
+<div class="history-page">
+    <div class="page-header">
+        <h1>Glucose History</h1>
+        <a href="{{ url_for('log_glucose') }}" class="btn btn-primary">+ Log Reading</a>
+    </div>
+
+    {% if readings %}
+    <div class="readings-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>Date & Time</th>
+                    <th>Type</th>
+                    <th>Value (mg/dL)</th>
+                    <th>Meal Context</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for reading in readings %}
+                <tr class="{% if reading.flagged_high %}reading-high{% elif reading.flagged_low %}reading-low{% endif %}">
+                    <td>{{ reading.timestamp }}</td>
+                    <td>{{ reading.reading_type.replace('_', ' ').title() }}</td>
+                    <td><strong>{{ reading.reading_value }}</strong></td>
+                    <td>{{ reading.meal_context or '—' }}</td>
+                    <td>
+                        {% if reading.flagged_high %}
+                        <span class="badge badge-warning">Above Target</span>
+                        {% elif reading.flagged_low %}
+                        <span class="badge badge-danger">Low</span>
+                        {% else %}
+                        <span class="badge badge-success">Normal</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="history-info">
+        <p>Showing last 50 readings. Talk to your provider about patterns or concerns.</p>
+    </div>
+    {% else %}
+    <div class="empty-state">
+        <h3>No readings recorded yet</h3>
+        <p>Start tracking your glucose levels to monitor your GDM</p>
+        <a href="{{ url_for('log_glucose') }}" class="btn btn-primary">Log Your First Reading</a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

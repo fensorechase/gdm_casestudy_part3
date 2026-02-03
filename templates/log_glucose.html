@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}Log Glucose - GDM Care{% endblock %}
+
+{% block content %}
+<div class="form-page">
+    <div class="form-header">
+        <h1>Log Glucose Reading</h1>
+        <p>Record your blood glucose measurement</p>
+    </div>
+
+    <form method="POST" action="{{ url_for('log_glucose') }}" class="standard-form">
+        <div class="form-group">
+            <label for="reading_value">Glucose Reading (mg/dL) *</label>
+            <input type="number" id="reading_value" name="reading_value" 
+                   step="0.1" min="40" max="400" required autofocus
+                   placeholder="e.g., 95.5">
+            <small>Enter your blood glucose measurement</small>
+        </div>
+
+        <div class="form-group">
+            <label for="reading_type">Reading Type *</label>
+            <select id="reading_type" name="reading_type" required>
+                <option value="fasting">Fasting (before breakfast)</option>
+                <option value="post_breakfast">After Breakfast (2 hours)</option>
+                <option value="post_lunch">After Lunch (2 hours)</option>
+                <option value="post_dinner">After Dinner (2 hours)</option>
+                <option value="bedtime">Bedtime</option>
+            </select>
+            <small>When did you take this reading?</small>
+        </div>
+
+        <div class="form-group">
+            <label for="meal_context">What did you eat? (optional)</label>
+            <textarea id="meal_context" name="meal_context" rows="3" 
+                      placeholder="e.g., 2 idlis with sambar, 1 cup chai"></textarea>
+            <small>Helps track how food affects your glucose</small>
+        </div>
+
+        <div class="form-group">
+            <label for="notes">Notes (optional)</label>
+            <textarea id="notes" name="notes" rows="2" 
+                      placeholder="e.g., felt tired, had a headache"></textarea>
+            <small>Any symptoms or observations</small>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Save Reading</button>
+            <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+
+    <div class="info-box">
+        <h4>Target Ranges</h4>
+        <ul>
+            <li><strong>Fasting:</strong> Less than 95 mg/dL</li>
+            <li><strong>After Meals:</strong> Less than 120 mg/dL (2 hours after eating)</li>
+        </ul>
+        <p><small>These are your personalized targets. Contact your provider if readings are consistently outside these ranges.</small></p>
+    </div>
+</div>
+{% endblock %}
