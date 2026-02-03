@@ -29,3 +29,9 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Document index files, LLM
+# This info in these 2 directories can be re-downloaded for a new setup by running 'python setup_real_rag.py'
+rag/ 
+models/
+
