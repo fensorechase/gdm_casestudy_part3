@@ -373,4 +373,4 @@ def send_message():
 
 if __name__ == '__main__':
     # Run app (debug mode for development)
-    app.run(debug=True, host='0.0.0.0', port=5001) # Try 5000, 5001 or 8000 if one is in use
+    app.run(debug=True, host='0.0.0.0', port=5000) # Try 5000, 5001 or 8000 if one is in use

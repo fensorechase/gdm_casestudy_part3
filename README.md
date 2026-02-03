@@ -73,7 +73,8 @@ http://localhost:5000
 - Session management
 
 **Files:**
-- `app.py` - Routes: `/register`, `/login`, `/logout`
+- `app.py` 
+- Routes: `/register`, `/login`, `/logout`
 - `templates/login.html`, `templates/register.html`
 
 ### 2. Patient Dashboard
@@ -91,7 +92,8 @@ http://localhost:5000
 - View complete history
 
 **Files:**
-- `app.py` - Routes: `/log-glucose`, `/glucose-history`
+- `app.py` 
+- Routes: `/log-glucose`, `/glucose-history`
 - `templates/log_glucose.html`, `templates/glucose_history.html`
 
 ### 4. AI Chat with Kerala Diet Knowledge
@@ -101,7 +103,8 @@ http://localhost:5000
 - Real-time responses
 
 **Files:**
-- `app.py` - Routes: `/chat`, `/chat/send`
+- `app.py` 
+- Routes: `/chat`, `/chat/send`
 - `lib/chatbot.py` - RAG logic (simplified for MVP)
 - `templates/chat.html`
 
@@ -181,16 +184,7 @@ knowledge_base = {
 }
 ```
 
-**To upgrade to real RAG:**
-1. Add `llama-cpp-python` to requirements
-2. Download Llama 3.2 1B model (~1GB)
-3. Add `sentence-transformers` for embeddings
-4. Implement FAISS vector search
-5. Load Kerala diet documents
 
-**Why simple for MVP?** Easier to understand, faster setup, same UX flow.
-
----
 
 ## Testing the MVP
 
@@ -258,32 +252,6 @@ pip install -r requirements.txt
 
 ---
 
-## Next Steps (Future Lectures)
-
-### System Design Deep Dive
-
-- [ ] FHIR-compliant data standards
-- [ ] HIPAA security compliance
-- [ ] Offline-first architecture
-- [ ] Low-resource environment strategies
-
-### Cloud Deployment
-
-- [ ] Deploy to Google Cloud (with student credits)
-- [ ] Set up PostgreSQL database
-- [ ] Implement real LLM (Llama 3.2)
-- [ ] Add vector database (FAISS/Pinecone)
-
-### Additional Features
-
-- [ ] Provider dashboard
-- [ ] Push notifications
-- [ ] Glucose trend charts
-- [ ] ASHA worker interface
-- [ ] Export data as PDF
-
----
-
 ## Contributing
 
 This is a class project. To add features:
@@ -303,12 +271,6 @@ This is a class project. To add features:
 5. Update GitHub Project board
 
 ---
-
-## Credits
-
-**Course:** CS 584 - Software Engineering in Practice
-**Term:** Spring 2026  
-**Instructors:** Chase Fensore
 
 **Built with:**
 
