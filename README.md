@@ -140,7 +140,6 @@ gdm-chatbot-mvp/
 │       └── main.js       # Minimal JavaScript
 │
 └── docs/                 # Documentation
-    ├── FIGMA_WIREFRAMES.md
     └── KANBAN_CARDS.md
 ```
 
