@@ -27,7 +27,8 @@ login_manager.login_view = 'login'
 
 # Import models and chatbot
 from lib.models import User, init_db
-from lib.chatbot import ChatbotRAG
+# from lib.chatbot import ChatbotRAG # TODO: Change from lib.chatbot for fake question-answering --> lib.chatbot_rag_real for real RAG with LLM + FAISS.
+from lib.chatbot_rag_real import ChatbotRAG 
 
 # Initialize database on startup
 with app.app_context():
