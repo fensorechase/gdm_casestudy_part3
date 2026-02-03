@@ -1,22 +1,23 @@
-# GitHub Project - Kanban Card Templates
+# GitHub Project - Kanban Card Templates (for future reference)
 ## GDM Care MVP
 
 > **Purpose:** Template cards to organize MVP development work  
-> **Use in lecture:** Create these cards together as a class after defining MVP features
 
 ---
 
 ## Card Categories (Labels)
 
-Create these labels in your GitHub repo:
+For your specific project, you may create something like these labels in your GitHub repo:
+
+- The 'ui', 'api', 'database' cards are quite standard -- you may include more categories specific to your project if it helps you organize features within that category. Additionally, the category colors are just suggestions.
 
 | Label | Color | When to Use |
 |-------|-------|-------------|
-| `ui` | #3B82F6 (blue) | Frontend templates, styling, user interface |
-| `api` | #10B981 (green) | Backend routes, endpoints, data processing |
-| `database` | #F59E0B (orange) | Schema design, queries, data models |
-| `chat` | #8B5CF6 (purple) | Chatbot logic, RAG, LLM integration |
-| `docs` | #6B7280 (gray) | Documentation, README, guides |
+| `ui` | (blue) | Frontend templates, styling, user interface |
+| `api` | (green) | Backend routes, endpoints, data processing |
+| `database` | (orange) | Schema design, queries, data models |
+| `chat` | (purple) | Chatbot logic, RAG, LLM integration |
+| `docs` | (gray) | Documentation, README, guides |
 
 ---
 
@@ -143,7 +144,7 @@ Create POST endpoint that receives user messages, gets chatbot response, saves b
 
 **Files to Modify:**
 - `app.py` (send_message route)
-- `app/chatbot.py` (get_response method)
+- `lib/chatbot.py` (get_response method)
 
 ---
 
@@ -173,7 +174,7 @@ Create POST endpoint that saves glucose readings to database with automatic high
 
 **Files to Modify:**
 - `app.py` (log_glucose route)
-- `app/models.py` (if adding helper functions)
+- `lib/models.py` (if adding helper functions)
 
 ---
 
@@ -230,7 +231,7 @@ Create minimal SQLite schema to support authentication, glucose tracking, and ch
 - Database initializes on first app run
 
 **Files to Modify:**
-- `app/models.py` (init_db function)
+- `lib/models.py` (init_db function)
 
 ---
 
@@ -285,7 +286,7 @@ Build chatbot with Kerala-specific food knowledge using simple keyword matching 
 - Default response suggests asking about specific foods
 
 **Files to Modify:**
-- `app/chatbot.py` (ChatbotRAG class)
+- `lib/chatbot.py` (ChatbotRAG class)
 
 ---
 
@@ -408,15 +409,3 @@ Create reference documentation for all API endpoints in the app.
 **Rule:** If a card is bigger than L, break it into multiple smaller cards!
 
 ---
-
-## Next Steps After Lecture
-
-Students will:
-1. Pick 1-2 cards from "To Do"
-2. Move to "In Progress"
-3. Create feature branch
-4. Implement
-5. Create Pull Request
-6. Move card to "Done" when PR merged
-
-This teaches real-world development workflow!
