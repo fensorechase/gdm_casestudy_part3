@@ -46,7 +46,6 @@ python setup_real_rag.py
 # Step 2: Ensure your app.py uses new chatbot file...
 - Change from "from lib.chatbot_rag_real import ChatbotRAG" not "from lib.chatbot import ChatbotRAG"
 
-
 ```
 
 **Windows:**
