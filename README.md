@@ -5,7 +5,7 @@
 
 ---
 
-## What's In This MVP?
+## What's In This MVP? [Here, we have implemented version of AI chat]
 
 This prototype demonstrates:
 1. **Patient Authentication** - Register and login
@@ -38,6 +38,15 @@ pip install -r requirements.txt
 
 # Run the app
 python app.py
+
+# TO EXPAND TO REAL RAG CHATBOT (LOCAL):
+# Step 1: this will create your vector database & download the 1B Llama model.
+python setup_real_rag.py
+
+# Step 2: Ensure your app.py uses new chatbot file...
+- Change from "from lib.chatbot_rag_real import ChatbotRAG" not "from lib.chatbot import ChatbotRAG"
+
+
 ```
 
 **Windows:**
@@ -116,6 +125,7 @@ gdm-chatbot-mvp/
 │
 ├── lib/
 │   ├── models.py          # Database models & initialization
+|   ├── chatbot_rag_real.py # Local implementation of functional RAG chatbot (using Llama + RAG) 
 │   └── chatbot.py         # RAG chatbot (MVP version)
 │
 ├── database/
